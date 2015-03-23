@@ -14,7 +14,8 @@ object arrays {
   }
 
   def getIntsAsString(label: String, delimiter: String, a: Array[Int]): String = {
-    ""
+    //""
+    label + a.mkString(delimiter)
   }
 
   // Read the contents of filename into a.
@@ -32,8 +33,8 @@ object arrays {
 
   def minimum(a: Array[Int]): Int = {
     require(a.length > 0) // if you delete this, the tests will not pass!
-
-    return 0; // so stub compiles
+    a.min
+    //return 0; // so stub compiles
   }
   //CountEven chunk
   ///  Return the number of even values in a.
@@ -82,7 +83,13 @@ object arrays {
   ///  Examples: If a contains {2, 5, 5, 8}, return true;
   ///  if a contains {2, 5, 3, 8}, return false. 
   def isAscending(a: Array[Int]): Boolean = {
-    false
+       var i = 1
+       var increasing = true
+       for(i <- 1 until a.length){
+            if (a(i) <= a(i-1)) {
+                var increasing = false}
+       }
+       increasing
   }
 
   /*
