@@ -1,4 +1,5 @@
 import scala.math.min
+import scala.io.Source
 
 object arrays {
 
@@ -23,7 +24,13 @@ object arrays {
   // Each line should be converted to Int (if possible) or 0 otherwise.
 
   def readFileIntoArray(filename: String, a: Array[Int]) {
-
+     val file = Source.fromFile(filename)
+     var i = 0
+     for(line <- file.getLines) {
+         if (i < a.length) 
+            a(i) = line.toInt
+         i = i +1
+     }    
   }
 
   //Minimum chunk
@@ -40,7 +47,15 @@ object arrays {
   ///  Return the number of even values in a.
   ///  Example: If a contains {-4, 7, 6, 12, 9}, return 3. 
   def countEven(a: Array[Int]): Int = {
-    return 0; // so stub compiles
+      var i = 0
+      for (k <- 0 to a.length-1)
+      if (a(k)%2 == 0) {
+          i = i + 1}else{
+          i = i
+      }
+      i
+      
+    //return 0; // so stub compiles
   }
 
   //CountEven chunk
@@ -48,7 +63,14 @@ object arrays {
   ///  Example: If a contains {-4, 7, 6, 12, 9}, return 3. 
 
   def countOdd(a: Array[Int]): Int = {
-    return 0; // so stub compiles
+      var i = 0
+      for (k <- 0 to a.length-1)
+      if (a(k)%2 != 0) {
+          i = i + 1}else{
+          i = i
+      }
+      i
+    //return 0; // so stub compiles
   }
 
   //PairwiseAdd chunk
@@ -83,11 +105,10 @@ object arrays {
   ///  Examples: If a contains {2, 5, 5, 8}, return true;
   ///  if a contains {2, 5, 3, 8}, return false. 
   def isAscending(a: Array[Int]): Boolean = {
-       var i = 1
        var increasing = true
-       for(i <- 1 until a.length){
-            if (a(i) <= a(i-1)) {
-                var increasing = false}
+       for(i <- 0 to a.length-2){
+            if (a(i) > a(i+1)) {
+                increasing = false}
        }
        increasing
   }
@@ -115,7 +136,11 @@ object arrays {
 
   def getAscendingRun(a: Array[Int], position: Int): Int = {
     require(position < a.length)
-
+    var endPosition = position
+    for (i <- position to a.length-2)
+      if (a(i) > a(i+1)) {
+      endPosition = i + 1
+      }
     -1 // replace with your code, which should return Int
   }
 
