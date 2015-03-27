@@ -80,7 +80,9 @@ object arrays {
   ///  then at the end sum should contain {9, 3, 14}. 
 
   def pairwiseAdd(a: Array[Int], b: Array[Int], c: Array[Int]) {
-
+      val addSize = min(a.length, b.length)
+      for (i <- 0 to addSize-1){
+          c(i) = a(i) + b(i)}
   }
   //NewPairwiseAdd chunk
   ///  Return a new array whose elements are the sums of the
@@ -91,9 +93,9 @@ object arrays {
   def newPairwiseAdd(a: Array[Int], b: Array[Int]): Array[Int] = {
     val addSize = min(a.length, b.length)
     val newArray = Array.fill(addSize)(0)
-
+    for (i <- 0 to addSize-1)
+      newArray(i) = (a(i) + b(i))
     // your code here
-
     newArray
   }
   //IsAscending chunk
